@@ -19,13 +19,13 @@ async function fetchPosts() {
     return response.data;
 }
 
-// Fetch all comments
+
 async function fetchComments() {
     const response = await axios.get(`${BASE_URL}/comments`);
     return response.data;
 }
 
-// Endpoint 1: Top Users (by number of posts)
+
 app.get('/User', async (req, res) => {
     try {
         const posts = await fetchPosts();
@@ -40,6 +40,7 @@ app.get('/User', async (req, res) => {
 
         res.json(topUsers);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error: 'Failed to fetch top users' });
     }
 });
